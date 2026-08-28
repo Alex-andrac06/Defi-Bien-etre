@@ -3,25 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Ton petit rituel</title>
+<title>Le pacte bien-être</title>
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23191218'/%3E%3Cpath d='M50 78s-27-16.7-27-37.4C23 29 31 22 40.5 22c4.9 0 9.5 2.7 9.5 8 0-5.3 4.6-8 9.5-8C69 22 77 29 77 40.6 77 61.3 50 78 50 78z' fill='%23c79cc0'/%3E%3C/svg%3E">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Le pacte bien-être">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#131116">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
   :root{
     --bg:#131116;
     --bg-elev:#1b1820;
-    --card:#1d1a22;
-    --card-2:#211d26;
-    --border:#2c2733;
+    --card:#161319;
+    --card-2:#18151b;
+    --border:#332e3c;
     --text:#f4eff2;
     --text-dim:#a89fac;
     --text-faint:#756c7a;
     --accent:#c79cc0;
+    --accent-label:#a97c9e;
+    --accent-btn:#9d7893;
     --accent-dim:#8a6b88;
     --accent-soft:rgba(199,156,192,0.14);
     --track:#332e3a;
@@ -64,47 +67,51 @@
 
   .eyebrow{
     display:flex; align-items:center; gap:6px;
-    font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
-    color:var(--accent); font-weight:600; margin:18px 0 6px 0;
+    font-size:12.5px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--accent-label); font-weight:700; margin:20px 0 8px 0;
   }
   h1.title{
-    font-family:'Fraunces',serif; font-weight:500; font-size:30px; line-height:1.15;
-    margin:0 0 4px 0; color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Roboto,Inter,sans-serif;
+    font-weight:500; font-size:29px; line-height:1.25; letter-spacing:-0.3px;
+    margin:0 0 8px 0; color:var(--text);
   }
-  .subtitle{color:var(--text-dim); font-size:14px; margin:0 0 14px 0; line-height:1.5;}
-  .date-line{color:var(--text-dim); font-size:14px; margin-bottom:16px;}
+  .subtitle{color:var(--text-dim); font-size:14px; margin:0 0 18px 0; line-height:1.55;}
+  .date-line{color:var(--text-dim); font-size:14px; margin-bottom:20px;}
 
   .who{
-    display:flex; align-items:center; gap:10px; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px; margin-bottom:22px;
   }
   .who label{font-size:14px; color:var(--text-dim); flex-shrink:0;}
   select.who-select{
-    flex:1;
+    flex:0 0 auto;
+    max-width:160px;
+    text-overflow:ellipsis; white-space:nowrap; overflow:hidden;
     background:var(--card); color:var(--text); border:1px solid var(--border);
-    border-radius:999px; padding:10px 16px; font-size:14px; font-family:inherit;
+    border-radius:999px; padding:7px 14px; font-size:13px; font-family:inherit;
     appearance:none; -webkit-appearance:none;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a89fac' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat:no-repeat; background-position:right 16px center;
+    background-repeat:no-repeat; background-position:right 14px center;
   }
 
   .card{
     background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg);
-    padding:18px; margin-bottom:14px;
+    padding:20px; margin-bottom:16px;
   }
-  .card-row-title{display:flex; align-items:center; gap:8px; font-size:14px; color:var(--text); margin-bottom:4px;}
+  .card-row-title{display:flex; align-items:center; gap:8px; font-size:14px; color:var(--text); margin-bottom:10px;}
   .card-row-title .ic{color:var(--accent); flex-shrink:0;}
-  .card-big{font-family:'Fraunces',serif; font-size:34px; font-weight:500; margin:6px 0 2px 0;}
-  .card-big .of{font-size:18px; color:var(--text-faint); font-weight:400;}
-  .card-desc{font-size:13px; color:var(--text-dim); line-height:1.4;}
-  .card h3{font-family:'Fraunces',serif; font-weight:500; font-size:19px; margin:0 0 4px 0;}
-  .card p.hint{font-size:13px; color:var(--text-dim); margin:0 0 12px 0; line-height:1.45;}
+  .card-big{font-family:'Inter',sans-serif; font-size:32px; font-weight:700; margin:8px 0 4px 0;}
+  .card-big .of{font-size:17px; color:var(--text-faint); font-weight:500;}
+  .card-desc{font-size:13px; color:var(--text-dim); line-height:1.5;}
+  .card h3{font-family:'Montserrat',sans-serif; font-weight:600; font-size:17px; letter-spacing:0.3px; margin:0 0 10px 0;}
+  .card p.hint{font-size:13px; color:var(--text-dim); margin:0 0 16px 0; line-height:1.5;}
 
-  .cat-label{font-size:11px; letter-spacing:1.2px; color:var(--accent); font-weight:600; margin:16px 0 6px 0; text-transform:uppercase;}
+  .cat-label{font-size:12.5px; letter-spacing:1.6px; color:var(--accent-label); font-weight:700; margin:15px 0 2px 0; text-transform:uppercase;}
+  .cat-label:first-child{margin-top:2px;}
   .habit-row{
     display:flex; align-items:center; justify-content:space-between;
-    padding:12px 0; border-bottom:1px solid var(--border);
+    padding:10px 0;
   }
-  .habit-row:last-child{border-bottom:none;}
+  .habit-row + .habit-row{ border-top:1px solid var(--border); }
   .habit-row span{font-size:14.5px;}
   .switch{
     position:relative; width:44px; height:26px; flex-shrink:0;
@@ -115,7 +122,7 @@
   }
   .switch .track:after{
     content:''; position:absolute; width:20px; height:20px; border-radius:50%;
-    background:#efeaea; top:3px; left:3px; transition:.2s;
+    background:#0e0c11; top:3px; left:3px; transition:.2s;
   }
   .switch input:checked + .track{background:var(--accent-dim);}
   .switch input:checked + .track:after{transform:translateX(18px); background:var(--accent);}
@@ -135,12 +142,12 @@
     height:6px; border-radius:99px; background:transparent;
   }
   input[type=range]::-webkit-slider-thumb{
-    -webkit-appearance:none; width:20px; height:20px; border-radius:50%;
+    -webkit-appearance:none; width:18px; height:18px; border-radius:50%;
     background:var(--accent); cursor:pointer; border:3px solid #131116;
-    margin-top:0px; position:relative;
+    margin-top:-6px; position:relative;
   }
   input[type=range]::-moz-range-thumb{
-    width:20px; height:20px; border-radius:50%; border:3px solid #131116;
+    width:18px; height:18px; border-radius:50%; border:3px solid #131116;
     background:var(--accent); cursor:pointer;
   }
 
@@ -162,25 +169,27 @@
     width:100%; border:none; border-radius:999px; padding:14px; font-size:15px; font-weight:600;
     font-family:inherit; cursor:pointer;
   }
-  .btn-primary{background:var(--accent); color:#241a22;}
-  .btn-primary:active{background:#b789ae;}
+  .btn-primary{background:var(--accent-btn); color:#ffffff;}
+  .btn-primary:active{background:#8a6a80;}
   .btn-ghost{background:transparent; border:1px solid var(--border); color:var(--text);}
 
   .link-row{display:flex; align-items:center; gap:8px; font-size:14px; color:var(--accent); cursor:pointer;}
 
   .tabbar{
-    position:fixed; bottom:0; left:50%; transform:translateX(-50%);
-    width:100%; max-width:480px;
+    position:fixed; bottom:calc(14px + env(safe-area-inset-bottom,0px)); left:50%; transform:translateX(-50%);
+    width:calc(100% - 32px); max-width:448px;
     display:flex; justify-content:space-around; align-items:center;
-    background:rgba(19,17,22,0.94); backdrop-filter:blur(14px);
-    border-top:1px solid var(--border);
-    padding:10px 6px calc(10px + env(safe-area-inset-bottom,0px)) 6px;
+    background:rgba(24,21,27,0.96); backdrop-filter:blur(14px);
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:9px 6px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
     z-index:20;
   }
   .tab-btn{
     display:flex; flex-direction:column; align-items:center; gap:3px;
     background:none; border:none; color:var(--text-faint); font-family:inherit;
-    font-size:10.5px; padding:6px 10px; border-radius:14px; cursor:pointer;
+    font-size:10.5px; padding:7px 10px; min-width:76px; border-radius:999px; cursor:pointer;
   }
   .tab-btn.active{color:var(--accent); background:var(--accent-soft);}
   .tab-btn svg{width:20px; height:20px;}
@@ -199,13 +208,28 @@
   }
   .badge.gray{background:var(--track); color:var(--text-dim);}
 
+  .segmented{
+    display:flex; background:var(--card-2); border:1px solid var(--border); border-radius:999px;
+    padding:4px; margin-bottom:14px; gap:2px;
+  }
+  .seg-btn{
+    flex:1; background:none; border:none; color:var(--text-dim); font-family:inherit;
+    font-size:12.5px; font-weight:600; padding:8px 6px; border-radius:999px; cursor:pointer;
+  }
+  .seg-btn.active{background:var(--accent-btn); color:#fff;}
+
   .book-item{
     background:var(--card-2); border:1px solid var(--border); border-radius:var(--radius-md);
     padding:14px; margin-bottom:10px;
   }
-  .book-top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
-  .book-top .bt{font-size:15px; font-weight:600;}
-  .book-author{font-size:12.5px; color:var(--text-dim); margin:2px 0 8px 0;}
+  .book-top{display:flex; align-items:flex-start; gap:10px;}
+  .book-icon{
+    width:34px; height:34px; border-radius:10px; background:var(--accent-soft);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .book-top .bt{font-size:15.5px; font-weight:600;}
+  .book-author{font-size:12.5px; color:var(--text-dim); margin:2px 0 10px 0;}
+  .book-rating{color:var(--accent); font-size:13px; font-weight:600; white-space:nowrap;}
   .progress-bar{height:6px; background:var(--track); border-radius:99px; overflow:hidden; margin:6px 0;}
   .progress-fill{height:100%; background:var(--accent); border-radius:99px;}
   .del-x{background:none; border:none; color:var(--text-faint); font-size:16px; cursor:pointer; padding:2px 6px;}
@@ -216,12 +240,18 @@
   .week-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin:14px 0;}
   .day-cell{
     background:var(--card-2); border-radius:var(--radius-sm); padding:8px 4px; text-align:center;
-    border:1px solid var(--border);
+    border:1px solid var(--border); min-height:84px;
   }
   .day-cell .dn{font-size:10px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.5px;}
-  .day-cell .dd{font-size:15px; font-weight:600; margin:4px 0;}
-  .day-cell .star{color:var(--accent); font-size:11px;}
-  .day-cell.today{border-color:var(--accent-dim);}
+  .day-cell .dd{font-size:15px; font-weight:600; margin:4px 0; color:var(--accent-label);}
+  .day-cell .star{color:var(--accent); font-size:12px; line-height:1;}
+  .day-cell .dnames{font-size:9px; color:var(--text-faint); margin-top:3px; line-height:1.25; word-break:break-word;}
+  .day-cell.today{
+    background:var(--accent-btn); border-color:var(--accent-btn);
+    box-shadow:0 0 16px rgba(199,156,192,0.35);
+  }
+  .day-cell.today .dn, .day-cell.today .dd{color:#fff;}
+  .day-cell.today .dnames{color:rgba(255,255,255,0.85);}
 
   .radio-row{
     display:flex; align-items:center; gap:10px; padding:11px 12px; border:1px solid var(--border);
@@ -258,7 +288,7 @@
   .center-stat{
     display:flex; justify-content:space-around; text-align:center; margin:6px 0 4px 0;
   }
-  .center-stat .cs-n{font-family:'Fraunces',serif; font-size:22px;}
+  .center-stat .cs-n{font-family:'Inter',sans-serif; font-weight:700; font-size:20px;}
   .center-stat .cs-l{font-size:10.5px; color:var(--text-faint); margin-top:2px;}
 
   .month-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:5px; margin:10px 0;}
@@ -277,7 +307,7 @@
 
   .detail-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:10px;}
   .detail-stats .ds-card{background:var(--card-2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px 8px; text-align:center;}
-  .detail-stats .ds-n{font-family:'Fraunces',serif; font-size:20px;}
+  .detail-stats .ds-n{font-family:'Inter',sans-serif; font-weight:700; font-size:19px;}
   .detail-stats .ds-l{font-size:10px; color:var(--text-faint); margin-top:2px;}
 
   .empty-note{font-size:13px; color:var(--text-faint); text-align:center; padding:20px 0;}
@@ -297,18 +327,21 @@
   <!-- ACCESS CODE GATE -->
   <div class="screen active" id="screen-lock">
     <div class="setup">
-      <div class="eyebrow" style="justify-content:center">✦ Espace privé</div>
-      <h1 class="title">Ton petit rituel</h1>
-      <p class="subtitle" style="margin-bottom:24px">Entre le code d'accès pour continuer.</p>
-      <input class="field" id="lock-code" type="password" placeholder="Code d'accès" onkeydown="if(event.key==='Enter') checkAccess()">
-      <button class="btn btn-primary" onclick="checkAccess()">Entrer</button>
+      <div style="width:64px; height:64px; border-radius:20px; background:rgba(199,156,192,0.14); border:1px solid rgba(199,156,192,0.28); display:flex; align-items:center; justify-content:center; margin-bottom:22px; box-shadow:0 0 44px rgba(199,156,192,0.28);">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7"><g transform="translate(12 12) scale(1.05 0.95) translate(-12 -12)"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></g></svg>
+      </div>
+      <h1 class="title" style="margin-bottom:4px; font-family:'Montserrat',sans-serif; font-weight:400; font-size:21px; letter-spacing:1.2px; text-transform:uppercase;">Le pacte bien-être</h1>
+      <p class="subtitle" style="margin-bottom:40px">Entre le code pour retrouver ton espace.</p>
+      <input class="field" id="lock-code" type="password" placeholder="Code" style="text-align:center; letter-spacing:4px; margin-bottom:36px; border-radius:999px;" onkeydown="if(event.key==='Enter') checkAccess()">
+      <button class="btn btn-primary" onclick="checkAccess()" style="color:#241a22;">Entrer</button>
+      <p class="card-desc" style="text-align:center; margin-top:18px; max-width:340px; font-size:12px;">Ce code protège juste des curieux — tes données restent entre nous.</p>
     </div>
   </div>
 
   <div class="screen" id="screen-setup">
     <div class="setup">
-      <div class="eyebrow" style="justify-content:center">✦ Bienvenue</div>
-      <h1 class="title">Ton petit rituel</h1>
+      <div class="eyebrow" style="justify-content:center">✳ Bienvenue</div>
+      <h1 class="title">Le pacte bien-être</h1>
       <p class="subtitle" style="margin-bottom:24px">Comment tu t'appelles ? Ce prénom servira à retrouver tes données et à les partager avec le groupe.</p>
       <input class="field" id="setup-name" placeholder="Ton prénom">
       <button class="btn btn-primary" onclick="createProfile()">Commencer</button>
@@ -317,7 +350,7 @@
 
   <!-- RITUEL -->
   <div class="screen" id="screen-rituel">
-    <div class="eyebrow">✦ Un moment pour toi</div>
+    <div class="eyebrow">✳ Un moment pour toi</div>
     <h1 class="title">Ton petit rituel</h1>
     <div class="date-line" id="rituel-date"></div>
     <div class="who">
@@ -339,7 +372,7 @@
 
     <div class="card">
       <div style="display:flex; justify-content:space-between; align-items:flex-start">
-        <h3 style="margin:0">Ma checklist bien-être</h3>
+        <h3 style="margin:0 0 10px 0">Ma checklist bien-être</h3>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)" style="flex-shrink:0"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/><path d="M19 15l.7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15z" opacity="0.6"/></svg>
       </div>
       <p class="hint">Coche les petites habitudes qui font du bien aujourd'hui.</p>
@@ -348,7 +381,7 @@
 
     <div class="card">
       <div style="display:flex; justify-content:space-between; align-items:flex-start">
-        <h3 style="margin:0">Mes repères du jour</h3>
+        <h3 style="margin:0 0 10px 0">Mes repères du jour</h3>
         <span style="color:var(--accent)">✎</span>
       </div>
       <p class="hint">Quelques chiffres pour prendre soin de toi, sans objectif à atteindre.</p>
@@ -356,13 +389,11 @@
       <div class="card" style="background:var(--card-2); margin-bottom:12px;">
         <div class="slider-top"><span class="slider-label"><svg width="15" height="15" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2C12 2 5 11 5 15.5C5 19.6 8.1 22 12 22C15.9 22 19 19.6 19 15.5C19 11 12 2 12 2Z"/></svg> Hydratation</span><span class="val" id="hydra-val">0 L / 2,5 L</span></div>
         <input type="range" min="0" max="25" id="hydra-slider" oninput="updateHydra(this.value)">
-        <div class="card-desc">Remplis progressivement ta jauge jusqu'à 2,5 L.</div>
       </div>
 
       <div class="card" style="background:var(--card-2); margin-bottom:12px;">
         <div class="slider-top"><span class="slider-label"><svg width="15" height="15" viewBox="0 0 24 24" fill="var(--accent)"><path d="M20.7 15.9C19.3 16.5 17.8 16.8 16.3 16.6C12.5 16.2 9.4 13.1 9 9.3C8.8 7.8 9.1 6.3 9.7 4.9C10 4.2 9.3 3.5 8.6 3.8C5 5.3 2.5 8.9 2.7 13C3 17.8 6.9 21.7 11.7 22C15.8 22.2 19.4 19.7 20.9 16.1C21.2 15.4 20.4 14.7 20.7 15.9Z"/></svg> Sommeil</span><span class="val" id="sleep-val">0 h / 9 h</span></div>
         <input type="range" min="0" max="9" id="sleep-slider" oninput="updateSleep(this.value)">
-        <div class="card-desc">Note simplement la durée de ta nuit, jusqu'à 9 heures.</div>
       </div>
 
       <h3>Mon humeur du jour</h3>
@@ -393,19 +424,19 @@
 
   <!-- LECTURES -->
   <div class="screen" id="screen-lectures">
-    <div class="eyebrow">✦ Un moment entre les pages</div>
-    <h1 class="title">Lectures du club</h1>
+    <div class="eyebrow">✳ Un moment entre les pages</div>
+    <h1 class="title">Les lectures du club</h1>
     <p class="subtitle">Ajoute tes livres, note ton avancée et retrouve tes coups de cœur.</p>
     <div class="who">
       <label>Je suis</label>
       <select class="who-select" id="who-select-2" onchange="switchMember(this.value)"></select>
     </div>
 
-    <button class="btn btn-primary" style="margin-bottom:14px" onclick="toggleAddBook()">+ Ajouter un livre</button>
+    <button class="btn btn-primary" style="margin-bottom:14px; padding:10px;" onclick="toggleAddBook()">+ Ajouter un livre</button>
 
     <div class="card" id="add-book-card" style="display:none">
       <div style="display:flex; justify-content:space-between; align-items:center">
-        <h3 style="margin:0">Ajouter un livre</h3><span style="color:var(--accent)">📖</span>
+        <h3 style="margin:0 0 10px 0">Ajouter un livre</h3><span style="color:var(--accent)">📖</span>
       </div>
       <p class="hint">Note ton avancement, ton état de lecture et ton ressenti.</p>
       <label class="field-label">Titre</label>
@@ -426,93 +457,99 @@
       </select>
       <label class="field-label">Ressenti (optionnel)</label>
       <textarea class="field" id="b-note" placeholder="Une lecture douce pour les soirs où…"></textarea>
+      <label class="field-label">Note (optionnel)</label>
+      <select class="field" id="b-rating">
+        <option value="">Pas encore noté</option>
+        <option value="1">★ 1/5</option>
+        <option value="1.5">★ 1.5/5</option>
+        <option value="2">★ 2/5</option>
+        <option value="2.5">★ 2.5/5</option>
+        <option value="3">★ 3/5</option>
+        <option value="3.5">★ 3.5/5</option>
+        <option value="4">★ 4/5</option>
+        <option value="4.5">★ 4.5/5</option>
+        <option value="5">★ 5/5</option>
+      </select>
       <button class="btn btn-primary" onclick="addBook()">Enregistrer le livre</button>
     </div>
 
-    <div class="row-2" style="margin-bottom:14px">
-      <div class="card" style="margin-bottom:0">
-        <div class="card-desc">Livres terminés</div>
-        <div class="card-big" id="stat-finished">0</div>
-        <div class="card-desc">sur <span id="stat-total">0</span> livres</div>
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start">
+        <div class="card-desc">Livres lus en <span id="stat-year">2026</span></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin-top:2px;">
+        <div class="card-big" id="stat-finished" style="margin:0">0</div>
+        <button class="badge" id="stat-goal-badge" onclick="editReadingGoal()" style="background:var(--accent-btn); color:#fff; cursor:pointer; border:none; font-family:inherit; margin-left:0;">Objectif 12 livres</button>
       </div>
     </div>
     <div class="row-2" style="margin-bottom:14px">
       <div class="card" style="margin-bottom:0">
-        <div class="card-desc">Pages parcourues</div>
-        <div class="card-big" id="stat-pages">0 <span class="of">p.</span></div>
+        <div class="card-desc">Ce mois-ci</div>
+        <div class="card-big" id="stat-month">0</div>
       </div>
       <div class="card" style="margin-bottom:0">
         <div class="card-desc">Lectures en cours</div>
-        <div class="card-big" id="stat-ongoing">0</div>
+        <div class="card-big" id="stat-ongoing" style="color:var(--accent-label)">0</div>
       </div>
     </div>
 
-    <div class="card" id="current-read-card" style="display:none">
-      <div class="eyebrow" style="margin-top:0">Lecture du moment</div>
-      <h3 id="cr-title"></h3>
-      <div class="card-desc" id="cr-author"></div>
-      <div class="slider-top" style="margin-top:10px"><span>Avancement</span><span class="val" id="cr-pct"></span></div>
-      <div class="progress-bar"><div class="progress-fill" id="cr-fill"></div></div>
-      <div class="card-desc" id="cr-left"></div>
-    </div>
-
     <h3>Ma bibliothèque</h3>
-    <p class="hint">Filtre tes lectures par mois ou par état pour les retrouver facilement.</p>
-    <select class="field" id="filter-status" onchange="renderBooks()">
-      <option value="Tous les états">Tous les états</option>
-      <option>À lire</option>
-      <option>En cours</option>
-      <option>Terminé</option>
-    </select>
+    <p class="hint">Groupée par mois — filtre par état pour retrouver facilement une lecture.</p>
+    <div class="segmented" id="filter-segmented">
+      <button class="seg-btn active" data-status="Tous les états" onclick="setFilter('Tous les états')">Tous</button>
+      <button class="seg-btn" data-status="En cours" onclick="setFilter('En cours')">En cours <span id="seg-count-encours"></span></button>
+      <button class="seg-btn" data-status="Terminé" onclick="setFilter('Terminé')">Terminés <span id="seg-count-termines"></span></button>
+    </div>
     <div id="book-list"></div>
   </div>
 
   <!-- SPORT -->
   <div class="screen" id="screen-sport">
-    <div class="eyebrow">✦ Le rendez-vous des copines</div>
+    <div class="eyebrow">✳ Motivées ensemble</div>
     <h1 class="title">Le rendez-vous des copines</h1>
-    <p class="subtitle">On avance ensemble, une séance à la fois.</p>
+    <p class="subtitle">On avance ensemble, sans pression, une séance à la fois.</p>
     <div class="who">
       <label>Je suis</label>
       <select class="who-select" id="who-select-3" onchange="switchMember(this.value)"></select>
     </div>
 
     <div class="card">
-      <div class="eyebrow" style="margin-top:0">Objectif du groupe</div>
-      <h3>Objectif 3x / semaine</h3>
-      <div class="card-desc">Pour rester motivé·es ensemble, sans pression et à son rythme.</div>
-      <div class="card-desc" style="margin-top:8px">Les 3 séances du défi : salle, vidéo ou vélo.</div>
-      <div class="card-desc" style="color:var(--accent)">En plus, si tu veux : yoga, étirements, course, danse ou abdos.</div>
-      <div class="card" style="background:var(--card-2); margin:14px 0 0 0; text-align:center">
-        <div class="card-desc">Cette semaine</div>
-        <div class="card-big" id="sport-week-count" style="justify-content:center">0<span class="of"> / 3</span></div>
-        <div class="card-desc">pour toi</div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <div class="eyebrow" style="margin:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.3"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg> Summer Body 2027</div>
+        <span class="badge" style="background:var(--card-2); border:1px solid var(--border); color:var(--text-dim); margin-left:0; padding:5px 12px; font-weight:500;">Septembre → Juin</span>
       </div>
-    </div>
-
-    <div class="row-2" style="margin-bottom:14px">
-      <div class="card" style="margin-bottom:0">
-        <div class="card-desc">Mon quota</div>
-        <div class="card-big" id="quota-mine">0 <span class="of">/ 3</span></div>
-        <div class="progress-bar"><div class="progress-fill" id="quota-mine-bar"></div></div>
-      </div>
-      <div class="card" style="margin-bottom:0">
-        <div class="card-desc">Toutes ensemble</div>
-        <div class="card-big" id="quota-all">0 <span class="of">/ <span id="quota-all-max">3</span></span></div>
-        <div class="progress-bar"><div class="progress-fill" id="quota-all-bar"></div></div>
+      <h3 style="font-family:'Montserrat',sans-serif; font-weight:600; letter-spacing:0.3px; font-size:22px; margin:0 0 8px 0">Objectif 3x / semaine</h3>
+      <div class="card-desc"><b style="color:var(--text)">Les 3 séances du défi :</b> salle, vidéo ou vélo.</div>
+      <div class="card-desc" style="color:var(--accent)"><b>En plus, si tu veux :</b> yoga, étirements, course, danse ou abdos.</div>
+      <div class="row-2" style="margin-top:14px">
+        <div class="card" style="background:var(--card-2); margin-bottom:0">
+          <div class="card-desc" style="color:var(--text); display:flex; align-items:center; gap:5px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg> Mon quota</div>
+          <div class="card-big" id="quota-mine" style="color:var(--accent)">0 <span class="of">/ 3</span></div>
+          <div class="progress-bar"><div class="progress-fill" id="quota-mine-bar"></div></div>
+          <div class="card-desc" id="quota-mine-msg" style="margin-top:6px; font-size:11.5px;">À ton rythme.</div>
+        </div>
+        <div class="card" style="background:var(--card-2); margin-bottom:0">
+          <div class="card-desc" style="color:var(--text); display:flex; align-items:center; gap:5px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--accent)"><path d="M20.7 15.9C19.3 16.5 17.8 16.8 16.3 16.6C12.5 16.2 9.4 13.1 9 9.3C8.8 7.8 9.1 6.3 9.7 4.9C10 4.2 9.3 3.5 8.6 3.8C5 5.3 2.5 8.9 2.7 13C3 17.8 6.9 21.7 11.7 22C15.8 22.2 19.4 19.7 20.9 16.1C21.2 15.4 20.4 14.7 20.7 15.9Z"/></svg> Team copines</div>
+          <div class="card-big" id="quota-all">0 <span class="of">/ <span id="quota-all-max">3</span></span></div>
+          <div class="progress-bar"><div class="progress-fill" id="quota-all-bar"></div></div>
+          <div class="card-desc" id="quota-all-msg" style="margin-top:6px; font-size:11.5px;">On se motive ensemble.</div>
+        </div>
       </div>
     </div>
 
     <div class="card">
-      <h3>Calendrier de la semaine</h3>
+      <div style="display:flex; justify-content:space-between; align-items:flex-start">
+        <h3 style="margin:0 0 10px 0">Calendrier de la semaine</h3>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent)" style="flex-shrink:0"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/><path d="M19 15l.7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15z" opacity="0.6"/></svg>
+      </div>
       <p class="hint">Les créneaux et séances partagées par le groupe.</p>
       <div class="week-grid" id="week-grid"></div>
-      <div class="card-desc">Un petit ✦ apparaît dès qu'une séance est partagée.</div>
+      <div class="card-desc">☀ séance obligatoire · ☾ bonus bien-être, dès qu'une séance est partagée.</div>
     </div>
 
     <div class="card">
       <div style="display:flex; justify-content:space-between; align-items:center">
-        <h3 style="margin:0">Partager ma séance</h3><span style="color:var(--accent)">↑</span>
+        <h3 style="margin:0 0 10px 0">Partager ma séance</h3><span style="color:var(--accent)">↑</span>
       </div>
       <p class="hint">Choisis ton activité, ajoute une photo si tu veux, puis partage.</p>
       <label class="field-label">Type de séance</label>
@@ -522,12 +559,12 @@
       <label class="field-label">Petit mot pour le groupe</label>
       <input class="field" id="sport-note" placeholder="Séance validée, qui vient demain ?">
       <div class="file-box">
-        <div class="fl">📷 Photo séance</div>
+        <div class="fl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M4 8h3l2-3h6l2 3h3v11H4V8z"/><circle cx="12" cy="13.5" r="3.3"/></svg> Photo séance</div>
         <div class="fd">Machine, tapis ou extérieur.</div>
         <input type="file" accept="image/*" id="sport-photo">
       </div>
       <div class="file-box">
-        <div class="fl">🖼 Selfie &amp; fit-check</div>
+        <div class="fl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><rect x="3" y="4" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.7" fill="var(--accent)" stroke="none"/><path d="M3 16l5-4 4 3 4-5 5 6"/></svg> Selfie &amp; fit-check</div>
         <div class="fd">Tenue, sourire et bonne humeur.</div>
         <input type="file" accept="image/*" id="sport-selfie">
       </div>
@@ -535,7 +572,10 @@
     </div>
 
     <div class="card">
-      <h3>Les séances partagées</h3>
+      <div style="display:flex; justify-content:space-between; align-items:flex-start">
+        <h3 style="margin:0 0 10px 0">Les séances partagées</h3>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" style="flex-shrink:0"><path d="M4 4h16v11H8l-4 4V4z"/></svg>
+      </div>
       <p class="hint">Un espace pour se motiver, pas pour se comparer.</p>
       <div id="sport-feed"></div>
     </div>
@@ -543,7 +583,7 @@
 
   <!-- GROUPE -->
   <div class="screen" id="screen-groupe">
-    <div class="eyebrow">✦ Ensemble, c'est plus doux</div>
+    <div class="eyebrow">✳ Ensemble, c'est plus doux</div>
     <h1 class="title">Le groupe</h1>
     <p class="subtitle">On partage, on s'encourage, on garde le rythme.</p>
     <div class="who">
@@ -552,7 +592,10 @@
     </div>
 
     <div class="card">
-      <h3>Progression de la semaine</h3>
+      <div style="display:flex; justify-content:space-between; align-items:flex-start">
+        <h3 style="margin:0 0 10px 0">Progression de la semaine</h3>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" style="flex-shrink:0"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3 2.5-5 6-5s6 2 6 5M10 20c0-3 2.5-5 6-5s6 2 6 5"/></svg>
+      </div>
       <p class="hint">Objectif commun : <span id="grp-target">3</span> séances à nous toutes.</p>
       <div id="member-progress"></div>
       <div class="center-stat" style="justify-content:center; gap:6px">
@@ -564,9 +607,11 @@
     </div>
 
     <div class="card">
-      <div class="card-row-title"><span class="ic">◔</span> Envoyer un encouragement</div>
+      <div class="card-row-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" class="ic"><path d="M4 4h16v11H8l-4 4V4z"/></svg> Envoyer un encouragement</div>
       <textarea class="field" id="encour-text" placeholder="Bravo pour ta séance, tu m'as motivée à y aller aussi…" style="margin-top:8px"></textarea>
-      <button class="btn btn-primary" onclick="sendEncouragement()">↗ Partager le message</button>
+      <button class="btn btn-primary" onclick="sendEncouragement()" style="display:flex; align-items:center; justify-content:center; gap:8px">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#ffffff"><path d="M2 12l19-9-6 19-4-7-7-3z"/></svg> Partager le message
+      </button>
     </div>
 
     <div class="card">
@@ -577,7 +622,7 @@
 
   <!-- RECAP -->
   <div class="screen" id="screen-recap">
-    <div class="eyebrow">✦ Revoir les petits pas</div>
+    <div class="eyebrow">✳ Revoir les petits pas</div>
     <h1 class="title">Récap de l'année</h1>
     <p class="subtitle">Choisis un mois, puis une journée pour retrouver ce qui s'est passé.</p>
     <div class="who">
@@ -624,7 +669,7 @@
 
   <div class="tabbar">
     <button class="tab-btn active" data-tab="rituel" onclick="goTab('rituel')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 8.6c0 5.6-8.8 10.6-8.8 10.6S3.2 14.2 3.2 8.6C3.2 5.5 5.6 3.2 8.5 3.2c1.8 0 3.4 1 4.3 2.5.9-1.5 2.5-2.5 4.3-2.5 2.9 0 5.7 2.3 5.7 5.4z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><g transform="translate(12 12) scale(1.05 0.95) translate(-12 -12)"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></g></svg>
       Rituel
     </button>
     <button class="tab-btn" data-tab="lectures" onclick="goTab('lectures')">
@@ -632,7 +677,7 @@
       Lectures
     </button>
     <button class="tab-btn" data-tab="sport" onclick="goTab('sport')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.5 6.5l11 11M4 9l3-3 3 3-3 3-3-3zM17 14l3-3-3-3-3 3 3 3zM2 12l2-2M20 14l2-2"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9v6M2 10.5v3M20 9v6M22 10.5v3M7 12h10"/><rect x="4" y="8.5" width="3" height="7" rx="1"/><rect x="17" y="8.5" width="3" height="7" rx="1"/></svg>
       Sport
     </button>
     <button class="tab-btn" data-tab="groupe" onclick="goTab('groupe')">
@@ -647,14 +692,53 @@
   <div class="toast" id="toast"></div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore-compat.js"></script>
 <script>
+/* ---------------- FIREBASE (shared data: members, sport sessions, encouragements) ---------------- */
+const firebaseConfig = {
+  apiKey: "AIzaSyAlkS5mQvfbsIxCpCziGYbwQ3yrBXA6hDM",
+  authDomain: "le-pacte-bien-etre.firebaseapp.com",
+  projectId: "le-pacte-bien-etre",
+  storageBucket: "le-pacte-bien-etre.firebasestorage.app",
+  messagingSenderId: "367338659032",
+  appId: "1:367338659032:web:8f38a0e04f2906f4844bad"
+};
+let db = null;
+try{
+  firebase.initializeApp(firebaseConfig);
+  db = firebase.firestore();
+}catch(e){
+  console.error('Firebase indisponible dans ce contexte (aperçu) — la synchro Sport/Groupe sera désactivée, mais le reste de l\'app fonctionne normalement.', e);
+}
+
+async function fget(key){
+  if(!db) return null;
+  try{
+    const doc = await db.collection('shared').doc(key).get();
+    return doc.exists ? doc.data().value : null;
+  }catch(e){ console.error(e); return null; }
+}
+async function fset(key, value){
+  if(!db) return;
+  try{
+    await db.collection('shared').doc(key).set({ value: value });
+  }catch(e){ console.error(e); }
+}
+
 /* ---------------- CONFIG ---------------- */
 const HABITS = [
-  {cat:"Matin", items:["Se lever tôt","Boire un verre d'eau au réveil","Méditer 5 minutes","S'étirer"]},
-  {cat:"Journée", items:["Manger un fruit","Sortir prendre l'air","Faire une pause écran","Ranger un petit coin"]},
-  {cat:"Repos", items:["Faire une sieste","Se coucher avant minuit","Couper les écrans 30 min avant de dormir"]},
-  {cat:"Corps", items:["Boire assez d'eau","Bouger 10 minutes","Prendre une douche relaxante","Masser son cuir chevelu"]},
-  {cat:"Esprit", items:["Écrire 3 gratitudes","Lire quelques pages","Appeler un proche","Faire un compliment","Dire non à quelque chose","Respirer profondément"]},
+  {cat:"Matin", items:["Se lever tôt"]},
+  {cat:"Organisation", items:["Fixer mes objectifs du jour"]},
+  {cat:"Esprit", items:["Méditations","Manifestations positives","Gratitudes","Nouvelles connaissances"]},
+  {cat:"Corps", items:["Étirements"]},
+  {cat:"Présence", items:["Contempler la nature","Se balader"]},
+  {cat:"Alimentation", items:["Repas équilibrés"]},
+  {cat:"Soin", items:["Compléments alimentaires","Routine skincare du matin","Routine skincare du soir","Prendre un long bain"]},
+  {cat:"Liens", items:["Passer du temps avec mes proches"]},
+  {cat:"Plaisir", items:["Écouter de la musique","Regarder un film"]},
+  {cat:"Maison", items:["Ranger les espaces","Petit nettoyage"]},
+  {cat:"Repos", items:["S'accorder un temps de repos","Prendre le temps de lire"]},
 ];
 const SESSION_TYPES = [
   {v:"Renfo", t:"Renfo en musculation", d:"Muscu, legs ou haut du corps"},
@@ -665,6 +749,7 @@ const SESSION_TYPES = [
   {v:"Danse", t:"Danse", d:"Bonus bien-être"},
   {v:"Abdos", t:"Abdos", d:"Bonus bien-être"},
 ];
+const REQUIRED_TYPES = ["Renfo","Vidéo","Sortie"];
 const WEEK_TARGET = 3;
 const MONTHS = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
 
@@ -709,12 +794,12 @@ window.addEventListener('load', ()=>{ document.getElementById('lock-code').focus
 const DEFAULT_MEMBERS = ["Alexandra", "Laetitia"];
 async function init(){
   const saved = localStorage.getItem('tpr_me');
-  members = (await sget('members')) || [];
+  members = (await fget('members')) || [];
   let changed = false;
   DEFAULT_MEMBERS.forEach(name=>{
     if(!members.includes(name)){ members.push(name); changed = true; }
   });
-  if(changed) await sset('members', members);
+  if(changed) await fset('members', members);
   if(saved && members.includes(saved)){
     me = saved;
     startApp();
@@ -725,9 +810,9 @@ async function init(){
 async function createProfile(){
   const name = document.getElementById('setup-name').value.trim();
   if(!name){ toast("Entre ton prénom pour continuer"); return; }
-  members = (await sget('members')) || [];
+  members = (await fget('members')) || [];
   if(!members.includes(name)) members.push(name);
-  await sset('members', members);
+  await fset('members', members);
   localStorage.setItem('tpr_me', name);
   me = name;
   startApp();
@@ -757,7 +842,7 @@ async function switchMember(val){
     const name = prompt("Prénom de la nouvelle personne :");
     if(name && name.trim()){
       members.push(name.trim());
-      await sset('members', members);
+      await fset('members', members);
       me = name.trim();
       localStorage.setItem('tpr_me', me);
       fillWhoSelects();
@@ -779,24 +864,94 @@ function goTab(tab){
 
 /* ---------------- RITUEL ---------------- */
 let dayData = {done:[], hydra:0, sleep:0, mood:"", joy:""};
+let habitPrefs = {removed:[], added:[]};
+let editingHabits = false;
+
+function getMyHabitGroups(){
+  const groups = HABITS.map(g => ({
+    cat: g.cat,
+    items: g.items.filter(i => !habitPrefs.removed.includes(i))
+  })).filter(g => g.items.length > 0);
+  (habitPrefs.added || []).forEach(a => {
+    if(habitPrefs.removed.includes(a.item)) return;
+    let g = groups.find(x => x.cat.toLowerCase() === a.cat.toLowerCase());
+    if(g) g.items.push(a.item);
+    else groups.push({cat:a.cat, items:[a.item]});
+  });
+  return groups;
+}
+function totalHabitCount(){
+  return getMyHabitGroups().reduce((s,g)=>s+g.items.length,0);
+}
+
+function toggleEditHabits(){
+  editingHabits = !editingHabits;
+  renderHabitList();
+}
 
 function renderHabitList(){
   const wrap = document.getElementById('habit-list');
-  wrap.innerHTML = HABITS.map(group => `
+  const groups = getMyHabitGroups();
+  wrap.innerHTML = groups.map(group => `
     <div class="cat-label">${group.cat}</div>
+    <div class="habit-group">
     ${group.items.map(item => `
       <div class="habit-row">
         <span>${item}</span>
-        <label class="switch">
-          <input type="checkbox" data-item="${item}" onchange="toggleHabit('${item.replace(/'/g,"\\'")}', this.checked)">
-          <span class="track"></span>
-        </label>
+        ${editingHabits
+          ? `<button class="del-x" onclick="removeHabit('${item.replace(/'/g,"\\'")}')">✕</button>`
+          : `<label class="switch">
+              <input type="checkbox" data-item="${item}" onchange="toggleHabit('${item.replace(/'/g,"\\'")}', this.checked)">
+              <span class="track"></span>
+            </label>`
+        }
       </div>
     `).join('')}
-  `).join('');
+    </div>
+  `).join('') + `
+    <div class="link-row" style="margin-top:14px" onclick="toggleEditHabits()">${editingHabits ? '✓ Terminer' : '✎ Personnaliser ma checklist'}</div>
+    ${editingHabits ? `
+      <div class="card" style="background:var(--card-2); margin:12px 0 0 0">
+        <label class="field-label">Catégorie</label>
+        <input class="field" id="new-habit-cat" placeholder="Ex : Matin, Esprit…">
+        <label class="field-label">Nouvelle habitude</label>
+        <input class="field" id="new-habit-item" placeholder="Ex : Boire un café tranquille">
+        <button class="btn btn-ghost" onclick="addCustomHabit()">+ Ajouter cette habitude</button>
+      </div>
+    ` : ''}
+  `;
+  if(!editingHabits){
+    document.querySelectorAll('#habit-list input[type=checkbox]').forEach(cb=>{
+      cb.checked = dayData.done.includes(cb.dataset.item);
+    });
+  }
+  const totalEl = document.getElementById('checklist-count');
+  if(totalEl) totalEl.innerHTML = dayData.done.length + '<span class="of"> / '+totalHabitCount()+'</span>';
+}
+async function addCustomHabit(){
+  const cat = document.getElementById('new-habit-cat').value.trim();
+  const item = document.getElementById('new-habit-item').value.trim();
+  if(!cat || !item){ toast("Ajoute une catégorie et une habitude"); return; }
+  habitPrefs.added = habitPrefs.added || [];
+  habitPrefs.added.push({cat, item});
+  await sset(`habitPrefs:${me}`, habitPrefs);
+  renderHabitList();
+  toast("Habitude ajoutée à ta checklist");
+}
+async function removeHabit(item){
+  if(!habitPrefs.removed.includes(item)) habitPrefs.removed.push(item);
+  habitPrefs.added = (habitPrefs.added||[]).filter(a=>a.item!==item);
+  if(dayData.done.includes(item)){
+    dayData.done = dayData.done.filter(i=>i!==item);
+    await saveDay();
+  }
+  await sset(`habitPrefs:${me}`, habitPrefs);
+  renderHabitList();
 }
 
 async function loadRituel(){
+  habitPrefs = (await sget(`habitPrefs:${me}`)) || {removed:[], added:[]};
+  editingHabits = false;
   renderHabitList();
   const d = new Date();
   document.getElementById('rituel-date').textContent = d.toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long'});
@@ -805,7 +960,7 @@ async function loadRituel(){
   document.querySelectorAll('#habit-list input[type=checkbox]').forEach(cb=>{
     cb.checked = dayData.done.includes(cb.dataset.item);
   });
-  document.getElementById('checklist-count').innerHTML = dayData.done.length + '<span class="of"> / 21</span>';
+  document.getElementById('checklist-count').innerHTML = dayData.done.length + '<span class="of"> / '+totalHabitCount()+'</span>';
   document.getElementById('hydra-slider').value = dayData.hydra;
   document.getElementById('hydra-val').textContent = (dayData.hydra/10).toFixed(1).replace('.',',') + ' L / 2,5 L';
   fillGauge(document.getElementById('hydra-slider'));
@@ -824,7 +979,7 @@ function fillGauge(input){
 async function toggleHabit(item, checked){
   if(checked && !dayData.done.includes(item)) dayData.done.push(item);
   if(!checked) dayData.done = dayData.done.filter(i=>i!==item);
-  document.getElementById('checklist-count').innerHTML = dayData.done.length + '<span class="of"> / 21</span>';
+  document.getElementById('checklist-count').innerHTML = dayData.done.length + '<span class="of"> / '+totalHabitCount()+'</span>';
   await saveDay();
 }
 function updateHydra(v){
@@ -848,12 +1003,26 @@ async function saveDay(showToast){
 
 /* ---------------- LECTURES ---------------- */
 let books = [];
+let readingGoal = 12;
+let bookFilter = "Tous les états";
+
 function toggleAddBook(){
   const c = document.getElementById('add-book-card');
   c.style.display = c.style.display === 'none' ? 'block' : 'none';
 }
 async function loadLectures(){
   books = (await sget(`books:${me}`)) || [];
+  readingGoal = (await sget(`readingGoal:${me}`)) || 12;
+  bookFilter = "Tous les états";
+  renderBooks();
+}
+async function editReadingGoal(){
+  const val = prompt("Ton objectif de livres pour l'année :", readingGoal);
+  if(val === null) return;
+  const n = parseInt(val);
+  if(!n || n < 1){ toast("Entre un nombre valide"); return; }
+  readingGoal = n;
+  await sset(`readingGoal:${me}`, readingGoal);
   renderBooks();
 }
 async function addBook(){
@@ -861,6 +1030,7 @@ async function addBook(){
   if(!title){ toast("Ajoute au moins un titre"); return; }
   const pages = parseInt(document.getElementById('b-pages').value) || 0;
   const current = parseInt(document.getElementById('b-current').value) || 0;
+  const now = new Date();
   books.push({
     id: Date.now(),
     title,
@@ -869,10 +1039,14 @@ async function addBook(){
     pages, current,
     status: document.getElementById('b-status').value,
     note: document.getElementById('b-note').value.trim(),
-    month: MONTHS[new Date().getMonth()]
+    rating: document.getElementById('b-rating').value || "",
+    month: MONTHS[now.getMonth()],
+    monthIndex: now.getMonth(),
+    year: now.getFullYear()
   });
   await sset(`books:${me}`, books);
   ['b-title','b-author','b-genre','b-pages','b-current','b-note'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('b-rating').value = '';
   toggleAddBook();
   renderBooks();
   toast("Livre ajouté à ta bibliothèque");
@@ -889,52 +1063,78 @@ async function deleteBook(id){
   await sset(`books:${me}`, books);
   renderBooks();
 }
+function setFilter(status){
+  bookFilter = status;
+  document.querySelectorAll('.seg-btn').forEach(b=>b.classList.toggle('active', b.dataset.status===status));
+  renderBooks();
+}
 function renderBooks(){
-  const filter = document.getElementById('filter-status').value;
-  const finished = books.filter(b=>b.status==="Terminé");
+  const now = new Date();
+  const thisYear = now.getFullYear();
+  const thisMonth = now.getMonth();
+  const finishedThisYear = books.filter(b=>b.status==="Terminé" && (b.year===undefined || b.year===thisYear));
+  const finishedThisMonth = books.filter(b=>b.status==="Terminé" && b.monthIndex===thisMonth && (b.year===undefined || b.year===thisYear));
   const ongoing = books.filter(b=>b.status==="En cours");
-  document.getElementById('stat-finished').textContent = finished.length;
-  document.getElementById('stat-total').textContent = books.length;
-  document.getElementById('stat-pages').innerHTML = finished.reduce((s,b)=>s+(b.pages||0),0) + ' <span class="of">p.</span>';
+
+  document.getElementById('stat-year').textContent = thisYear;
+  document.getElementById('stat-finished').textContent = finishedThisYear.length;
+  document.getElementById('stat-goal-badge').textContent = 'Objectif ' + readingGoal + ' livres';
+  document.getElementById('stat-month').textContent = finishedThisMonth.length;
   document.getElementById('stat-ongoing').textContent = ongoing.length;
+  document.getElementById('seg-count-encours').textContent = '(' + ongoing.length + ')';
+  document.getElementById('seg-count-termines').textContent = '(' + books.filter(b=>b.status==="Terminé").length + ')';
 
-  const current = ongoing[0];
-  const crCard = document.getElementById('current-read-card');
-  if(current){
-    crCard.style.display = 'block';
-    document.getElementById('cr-title').textContent = current.title;
-    document.getElementById('cr-author').textContent = (current.author||'—') + ' · page ' + current.current + ' sur ' + current.pages;
-    const pct = current.pages ? Math.round(current.current/current.pages*100) : 0;
-    document.getElementById('cr-pct').textContent = pct + '%';
-    document.getElementById('cr-fill').style.width = pct + '%';
-    document.getElementById('cr-left').textContent = 'Encore ' + Math.max(current.pages-current.current,0) + ' pages à découvrir.';
-  } else { crCard.style.display = 'none'; }
-
-  const list = filter === "Tous les états" ? books : books.filter(b=>b.status===filter);
+  const list = bookFilter === "Tous les états" ? books : books.filter(b=>b.status===bookFilter);
   const wrap = document.getElementById('book-list');
   if(!list.length){ wrap.innerHTML = '<div class="empty-note">Aucun livre pour l’instant. Ajoute ta première lecture !</div>'; return; }
-  wrap.innerHTML = list.map(b=>{
-    const pct = b.pages ? Math.round(b.current/b.pages*100) : 0;
-    const badgeClass = b.status === "Terminé" ? "" : (b.status === "En cours" ? "" : "gray");
-    return `
+
+  // Group by month label (most recent first)
+  const groups = [];
+  list.slice().reverse().forEach(b=>{
+    const label = b.month + (b.year ? ' ' + b.year : '');
+    let g = groups.find(x=>x.label===label);
+    if(!g){ g = {label, items:[]}; groups.push(g); }
+    g.items.push(b);
+  });
+
+  wrap.innerHTML = groups.map(g => `
+    <div class="cat-label" style="margin-bottom:10px">${g.label}</div>
+    ${g.items.map(b => renderBookCard(b)).join('')}
+  `).join('');
+}
+function renderBookCard(b){
+  const pct = b.pages ? Math.round(b.current/b.pages*100) : 0;
+  const badgeClass = b.status === "À lire" ? "gray" : "";
+  const ratingHtml = b.rating ? `<span class="book-rating">★ ${b.rating}/5</span>` : `<span class="card-desc">Pas encore noté</span>`;
+  return `
     <div class="book-item">
       <div class="book-top">
-        <div>
-          <span class="bt">${b.title}</span>
-          <span class="badge ${badgeClass}">${b.status}</span>
+        <div class="book-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5z"/></svg>
+        </div>
+        <div style="flex:1; min-width:0;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+            <span class="bt">${b.title}</span>
+            <span class="badge ${badgeClass}" style="margin-left:0">${b.status}</span>
+          </div>
+          <div class="book-author">${b.author || '—'}${b.genre ? ' · '+b.genre : ''}</div>
         </div>
         <button class="del-x" onclick="deleteBook(${b.id})">✕</button>
       </div>
-      <div class="book-author">${b.author || '—'}${b.genre ? ' · '+b.genre : ''}</div>
-      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
-      <div class="card-desc">Avancement : ${pct}%${b.note ? ' · « '+b.note+' »' : ''}</div>
-      <select class="field" style="margin:10px 0 0 0" onchange="updateBookStatus(${b.id}, this.value)">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+        <span class="card-desc">Avancement : <b style="color:var(--text)">${b.current} / ${b.pages} p.</b></span>
+        ${ratingHtml}
+      </div>
+      <div class="progress-bar" style="margin-top:8px">
+        <div class="progress-fill" style="width:${pct}%"></div>
+      </div>
+      ${b.note ? `<div class="card-desc" style="border-left:2px solid var(--accent); padding-left:10px; margin-top:10px; font-style:italic;">« ${b.note} »</div>` : ''}
+      <select class="field" style="margin:12px 0 0 0" onchange="updateBookStatus(${b.id}, this.value)">
         <option ${b.status==='À lire'?'selected':''}>À lire</option>
         <option ${b.status==='En cours'?'selected':''}>En cours</option>
         <option ${b.status==='Terminé'?'selected':''}>Terminé</option>
       </select>
     </div>`;
-  }).join('');
 }
 
 /* ---------------- SPORT ---------------- */
@@ -953,7 +1153,7 @@ function selectType(i){
   document.querySelectorAll('.radio-row').forEach((r,idx)=>r.classList.toggle('checked', idx===i));
 }
 async function loadSport(){
-  sessions = (await sget('sport:sessions')) || [];
+  sessions = (await fget('sport_sessions')) || [];
   renderSportTypes();
   renderWeek();
   renderQuota();
@@ -973,11 +1173,18 @@ function renderWeek(){
   const todayStr = todayKey();
   document.getElementById('week-grid').innerHTML = dates.map((d,i)=>{
     const ds = d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
-    const count = sessions.filter(s=>s.date===ds).length;
+    const daySessions = sessions.filter(s=>s.date===ds);
+    const hasRequired = daySessions.some(s=>REQUIRED_TYPES.includes(s.type));
+    const hasBonus = daySessions.some(s=>!REQUIRED_TYPES.includes(s.type));
+    let symbol = '·';
+    if(hasRequired) symbol = '☀';
+    else if(hasBonus) symbol = '☾';
+    const peopleNames = [...new Set(daySessions.map(s=>s.name.split(' ')[0]))].join(', ');
     return `<div class="day-cell ${ds===todayStr?'today':''}">
       <div class="dn">${names[i]}</div>
-      <div class="dd">${d.getDate()}</div>
-      <div class="star">${count ? '✦ '+count : '·'}</div>
+      <div class="dd">${d.getDate()}${ds===todayStr?' <span style="font-size:9px;">· Auj.</span>':''}</div>
+      <div class="star">${symbol}</div>
+      ${peopleNames ? `<div class="dnames">${peopleNames}</div>` : ''}
     </div>`;
   }).join('');
 }
@@ -987,18 +1194,33 @@ function renderQuota(){
   const mine = weekSessions.filter(s=>s.name===me).length;
   const total = weekSessions.length;
   const groupTarget = members.length * WEEK_TARGET;
-  document.getElementById('sport-week-count').innerHTML = mine + '<span class="of"> / '+WEEK_TARGET+'</span>';
   document.getElementById('quota-mine').innerHTML = mine + ' <span class="of">/ '+WEEK_TARGET+'</span>';
   document.getElementById('quota-mine-bar').style.width = Math.min(mine/WEEK_TARGET*100,100) + '%';
   document.getElementById('quota-all').innerHTML = total + ' <span class="of">/ <span id="quota-all-max">'+groupTarget+'</span></span>';
   document.getElementById('quota-all-bar').style.width = Math.min(total/groupTarget*100,100) + '%';
+
+  let mineMsg;
+  if(mine <= 0) mineMsg = "À ton rythme, quand tu veux.";
+  else if(mine === 1) mineMsg = "Une belle première séance !";
+  else if(mine < WEEK_TARGET) mineMsg = "Encore une petite séance quand tu le sentiras.";
+  else if(mine === WEEK_TARGET) mineMsg = "Objectif de la semaine atteint, bravo !";
+  else mineMsg = "Tu as dépassé ton objectif, magnifique !";
+  document.getElementById('quota-mine-msg').textContent = mineMsg;
+
+  let allMsg;
+  const allPct = groupTarget ? total / groupTarget : 0;
+  if(total <= 0) allMsg = "On commence à se motiver.";
+  else if(allPct < 0.5) allMsg = "On se motive ensemble.";
+  else if(allPct < 1) allMsg = "On y est presque, ensemble !";
+  else allMsg = "Objectif du groupe atteint, bravo à vous !";
+  document.getElementById('quota-all-msg').textContent = allMsg;
 }
 async function shareSession(){
   const type = document.querySelector('input[name=stype]:checked').value;
   const date = document.getElementById('sport-date').value || todayKey();
   const note = document.getElementById('sport-note').value.trim();
   sessions.push({ id:Date.now(), name:me, type, date, note });
-  await sset('sport:sessions', sessions);
+  await fset('sport_sessions', sessions);
   document.getElementById('sport-note').value = '';
   renderWeek(); renderQuota(); renderSportFeed();
   loadGroupe();
@@ -1024,7 +1246,7 @@ function renderSportFeed(){
 
 /* ---------------- GROUPE ---------------- */
 async function loadGroupe(){
-  sessions = (await sget('sport:sessions')) || [];
+  sessions = (await fget('sport_sessions')) || [];
   document.getElementById('grp-target').textContent = WEEK_TARGET;
   const dates = thisWeekDates().map(d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()));
   const weekSessions = sessions.filter(s=>dates.includes(s.date));
@@ -1041,7 +1263,7 @@ async function loadGroupe(){
   const target = members.length * WEEK_TARGET;
   document.getElementById('grp-total').textContent = total + ' / ' + target;
 
-  const msgs = (await sget('encouragements')) || [];
+  const msgs = (await fget('encouragements')) || [];
   const feed = document.getElementById('group-feed');
   const combined = [
     ...msgs.map(m=>({...m, kind:'msg'})),
@@ -1069,9 +1291,9 @@ async function loadGroupe(){
 async function sendEncouragement(){
   const text = document.getElementById('encour-text').value.trim();
   if(!text) return;
-  const msgs = (await sget('encouragements')) || [];
+  const msgs = (await fget('encouragements')) || [];
   msgs.push({ id:Date.now(), name:me, text });
-  await sset('encouragements', msgs);
+  await fset('encouragements', msgs);
   document.getElementById('encour-text').value = '';
   loadGroupe();
   toast("Message envoyé au groupe");
@@ -1097,7 +1319,7 @@ async function renderRecap(){
   const firstDow = (new Date(year, month, 1).getDay() + 6) % 7; // Monday=0
 
   const bks = (await sget(`books:${me}`)) || [];
-  const sess = (await sget('sport:sessions')) || [];
+  const sess = (await fget('sport_sessions')) || [];
 
   let rituelDays = 0, lectureDays = 0, sportDays = 0;
   const dayInfo = {};
@@ -1147,8 +1369,8 @@ async function showDayDetail(ds){
   const d = new Date(ds+"T00:00:00");
   document.getElementById('dd-date').textContent = d.toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long'});
   const rd = await sget(`rituel:${me}:${ds}`);
-  document.getElementById('dd-rituel').innerHTML = (rd?rd.done.length:0) + ' <span class="of">/ 21</span>';
-  const sess = (await sget('sport:sessions')) || [];
+  document.getElementById('dd-rituel').innerHTML = (rd?rd.done.length:0) + ' <span class="of">/ '+totalHabitCount()+'</span>';
+  const sess = (await fget('sport_sessions')) || [];
   document.getElementById('dd-sport').textContent = sess.filter(s=>s.date===ds && s.name===me).length;
   const bks = (await sget(`books:${me}`)) || [];
   const month = MONTHS[d.getMonth()];
