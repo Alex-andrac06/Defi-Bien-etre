@@ -541,7 +541,7 @@
       </div>
       <h3 style="font-family:'Montserrat',sans-serif; font-weight:600; letter-spacing:0.3px; font-size:22px; margin:0 0 8px 0">Objectif 3x / semaine</h3>
       <div class="card-desc"><b style="color:var(--text)">Les 3 séances du défi :</b> salle, vidéo ou vélo.</div>
-      <div class="card-desc" style="color:var(--accent)"><b>En plus, si tu veux :</b> yoga, étirements, course, danse ou abdos.</div>
+      <div class="card-desc" style="color:var(--accent)"><b>En plus, si tu veux :</b> yoga, étirements, course, danse, abdos ou randonnée.</div>
       <div class="row-2" style="margin-top:14px">
         <div class="card" style="background:var(--card-2); margin-bottom:0">
           <div class="card-desc" style="color:var(--text); display:flex; align-items:center; gap:5px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"/></svg> Mon quota</div>
@@ -575,7 +575,7 @@
       <p class="hint">Choisis ton activité et partage ta progression.</p>
       <label class="field-label">Type de séance</label>
       <div id="sport-type-list"></div>
-      <label class="field-label">Quand ?</label>
+      <label class="field-label" style="margin-top:14px;">Quand ?</label>
       <input class="field" id="sport-date" type="date">
       <label class="field-label">Détail (optionnel)</label>
       <input class="field" id="sport-detail" placeholder="18km, Pilates, haut du corps…">
@@ -807,6 +807,8 @@ const SESSION_TYPES = [
   {v:"Course", t:"Course", d:"Bonus bien-être"},
   {v:"Danse", t:"Danse", d:"Bonus bien-être"},
   {v:"Abdos", t:"Abdos", d:"Bonus bien-être"},
+  {v:"Marche", t:"Marche / Randonnée", d:"Bonus bien-être"},
+  {v:"Autre", t:"Autre", d:"Précise dans le détail ci-dessous"},
 ];
 const REQUIRED_TYPES = ["Renfo","Vidéo","Sortie"];
 const SUN_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" style="vertical-align:-2px"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.3M12 19.2v2.3M3.5 12h2.3M18.2 12h2.3M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M5.6 18.4l1.6-1.6M16.8 7.2l1.6-1.6"/></svg>';
@@ -1342,12 +1344,25 @@ let sessions = [];
 let encouragementsCache = [];
 function renderSportTypes(){
   const wrap = document.getElementById('sport-type-list');
-  wrap.innerHTML = SESSION_TYPES.map((s,i)=>`
-    <label class="radio-row ${i===0?'checked':''}" id="stype-${i}">
-      <input type="radio" name="stype" value="${s.v}" ${i===0?'checked':''} onchange="selectType(${i})">
-      <div><div class="rt">${s.t}</div><div class="rd">${s.d}</div></div>
-    </label>
-  `).join('');
+  const obligatoires = SESSION_TYPES.filter(s=>REQUIRED_TYPES.includes(s.v));
+  const bonus = SESSION_TYPES.filter(s=>!REQUIRED_TYPES.includes(s.v));
+  let idx = 0;
+  const renderGroup = (list, showDetail) => list.map(s => {
+    const html = `
+      <label class="radio-row ${idx===0?'checked':''}" id="stype-${idx}">
+        <input type="radio" name="stype" value="${s.v}" ${idx===0?'checked':''} onchange="selectType(${idx})">
+        <div><div class="rt">${s.t}</div>${showDetail ? `<div class="rd">${s.d}</div>` : ''}</div>
+      </label>
+    `;
+    idx++;
+    return html;
+  }).join('');
+  wrap.innerHTML = `
+    <div class="cat-label" style="margin-top:2px; margin-bottom:10px;">Le défi</div>
+    ${renderGroup(obligatoires, true)}
+    <div class="cat-label" style="margin-top:14px; margin-bottom:10px;">Bonus bien-être</div>
+    ${renderGroup(bonus, false)}
+  `;
   document.getElementById('sport-date').valueAsDate = new Date();
 }
 function selectType(i){
