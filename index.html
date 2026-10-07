@@ -686,6 +686,14 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" style="flex-shrink:0"><path d="M4 4h16v11H8l-4 4V4z"/></svg>
         </div>
         <p class="hint">Un espace pour se motiver, pas pour se comparer.</p>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin:2px 0 4px;">
+          <button type="button" id="feed-prev" onclick="shiftFeedWeek(-1)" style="background:none; border:none; color:var(--accent); font-size:22px; cursor:pointer; padding:4px 14px; line-height:1;" title="Semaine précédente">‹</button>
+          <div style="text-align:center;">
+            <div id="feed-week-label" style="font-weight:600; font-size:13px;"></div>
+            <div id="feed-week-reset" class="link-row" style="justify-content:center; font-size:11px; margin-top:3px; display:none;" onclick="resetFeedWeek()">Revenir à cette semaine</div>
+          </div>
+          <button type="button" id="feed-next" onclick="shiftFeedWeek(1)" style="background:none; border:none; color:var(--accent); font-size:22px; cursor:pointer; padding:4px 14px; line-height:1;" title="Semaine suivante">›</button>
+        </div>
         <div id="sport-feed"></div>
       </div>
     </div>
@@ -898,7 +906,7 @@
       <p class="hint">Télécharge une sauvegarde de ton rituel, de tes lectures et de ton carnet de salle.</p>
       <button class="btn btn-ghost" onclick="exportMyData()">Exporter mes données</button>
     </div>
-    <p class="hint" id="app-version" style="text-align:center; margin-top:4px;">Version 2026.10.07k</p>
+    <p class="hint" id="app-version" style="text-align:center; margin-top:4px;">Version 2026.10.07l</p>
   </div>
 
   <div class="tabbar">
@@ -2827,6 +2835,7 @@ async function shareSession(){
   const note = clip(document.getElementById('sport-note').value, 300);
   const favorite = document.getElementById('sport-favorite').checked;
   const coach = type === 'Vidéo' ? document.getElementById('sport-coach').value.trim().replace(/\s+/g,' ').slice(0,40) : '';
+  feedWeekOffset = 0;                                           // la nouvelle séance s'affiche dans la semaine en cours
   const exercises = type === 'Renfo' ? collectCarnet() : [];
   const session = { id:Date.now(), name:me, type, date, detail, coach, runType, duration, distance, elevation, difficulty, note, favorite, reactions:{}, replies:[] };
   sessions.push(session);
@@ -2862,13 +2871,26 @@ async function toggleFavorite(id){
   renderResume();
   await syncShared('sport_sessions', arr => arr.map(x => x.id===id ? { ...x, favorite: value } : x));
 }
+let feedWeekOffset = 0;                                         // 0 = cette semaine, -1 = la précédente, etc.
+function shiftFeedWeek(dir){ feedWeekOffset = Math.min(0, feedWeekOffset + dir); renderSportFeed(); }
+function resetFeedWeek(){ feedWeekOffset = 0; renderSportFeed(); }
 function renderSportFeed(){
   const wrap = document.getElementById('sport-feed');
   if(!wrap) return;
   refreshCoachSuggestions();
-  const dates = thisWeekDates().map(d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()));
+  const dates = getPeriodDates('semaine', feedWeekOffset);
+  const weekLabel = getPeriodLabel('semaine', feedWeekOffset);
+  const lbl = document.getElementById('feed-week-label');
+  if(lbl){
+    lbl.textContent = feedWeekOffset === 0 ? 'Cette semaine · ' + weekLabel : weekLabel;
+    document.getElementById('feed-week-reset').style.display = feedWeekOffset !== 0 ? 'flex' : 'none';
+    const hasEarlier = sessions.some(s => s.date && s.date < dates[0]);                       // on ne propose « avant » que s'il y a quelque chose à lire
+    const prev = document.getElementById('feed-prev'), next = document.getElementById('feed-next');
+    prev.disabled = !hasEarlier; prev.style.opacity = hasEarlier ? '1' : '0.25';
+    next.disabled = feedWeekOffset === 0; next.style.opacity = feedWeekOffset === 0 ? '0.25' : '1';
+  }
   const list = [...sessions].filter(s=>dates.includes(s.date)).sort((a,b)=> b.id - a.id);
-  if(!list.length){ wrap.innerHTML = '<div class="empty-note">Aucune séance partagée cette semaine pour l’instant.</div>'; return; }
+  if(!list.length){ wrap.innerHTML = '<div class="empty-note">' + (feedWeekOffset === 0 ? 'Aucune séance partagée cette semaine pour l’instant.' : 'Aucune séance partagée cette semaine-là.') + '</div>'; return; }
   wrap.innerHTML = list.map(s=>{
     const typeInfo = SESSION_TYPES.find(t=>t.v===s.type);
     const dateLabel = new Date(s.date+"T00:00:00").toLocaleDateString('fr-FR', {weekday:'short', day:'numeric'});
